@@ -45,13 +45,16 @@
       <span class="text-sm font-medium text-slate-800 mr-3">فیلتر : اپل</span>
     </div>
   </div>
-  <div class="grid grid-cols-12 grid-row-[55px_minmax(500px,_1fr)] p-4 md:gap-4 lg:gap-8">
+  <div>
+
+  </div>
+  <div class="lg:container mx-auto grid grid-cols-12 grid-row-[55px_minmax(500px,_1fr)] p-4 md:gap-4 lg:gap-8">
     <!-- sidbar -->
     <div class="hidden md:block col-span-3 row-span-2">
       <div class="bg-white p-5 rounded-xl">
         <!-- categories -->
         <div class="text-xl font-bold text-orange-400 mb-5">دسته بندی</div>
-        <ul class="mb-7">
+        <ul class="mb-4">
           <li
             class="flex items-center text-slate-800 py-2 mb-1 hover:bg-gray-50 rounded-md cursor-pointer ease-linear duration-200">
             <span>گوشی موبایل</span>
@@ -65,35 +68,96 @@
             <span>گوشی موبایل</span>
           </li>
         </ul>
+        <hr class="mb-4 border-orange-50">
         <!-- desktop filter -->
         <div class="text-xl font-bold text-orange-400 mb-5">فیلتر</div>
-        <div class="">
-          <div class="flex justify-between items-center w-full py-2">
-            <div>
+        <div x-data="{isOpenBrand : true}" class="mb-2">
+          <div @click="isOpenBrand = !isOpenBrand" class="flex justify-between items-center w-full py-2 cursor-pointer">
+            <div class="text-slate-800 font-bold">
               <span>برند محصول</span>
             </div>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+            <svg :class="isOpenBrand ? 'rotate-180' : 'rotate-0'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 transition-all duration-300">
               <path fill-rule="evenodd"
                 d="M12.53 16.28a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 011.06-1.06L12 14.69l6.97-6.97a.75.75 0 111.06 1.06l-7.5 7.5z"
                 clip-rule="evenodd" />
             </svg>
           </div>
-          <div class="px-2">
-            <label for="apple" class="flex items-center gap-y-2 cursor-pointer">
-              <input type="checkbox" name="brand" id="apple">
-              <span class="mr-2">اپل</span>
+          <div x-show="isOpenBrand === true" class="px-2">
+            <label for="apple" class="flex items-center gap-y-2 py-1 cursor-pointer text-slate-800">
+              <input type="checkbox" name="brand" id="apple" class="form-checkbox rounded duration-200 text-orange-400 focus:ring-orange-400">
+              <span class="mr-2 text-sm">اپل</span>
             </label>
-            <label for="apple" class="flex items-center gap-y-2 cursor-pointer">
-              <input type="checkbox" name="brand" id="apple">
-              <span class="mr-2">اپل</span>
+            <label for="samsung" class="flex items-center gap-y-2 py-1 cursor-pointer text-slate-800">
+              <input type="checkbox" name="brand" id="samsung" class="form-checkbox rounded duration-200 text-orange-400 focus:ring-orange-400">
+              <span class="mr-2 text-sm">سامسونگ</span>
             </label>
-            <label for="apple" class="flex items-center gap-y-2 cursor-pointer">
-              <input type="checkbox" name="brand" id="apple">
-              <span class="mr-2">اپل</span>
+            <label for="nokia" class="flex items-center gap-y-2 py-1 cursor-pointer text-slate-800">
+              <input type="checkbox" name="brand" id="nokia" class="form-checkbox rounded duration-200 text-orange-400 focus:ring-orange-400">
+              <span class="mr-2 text-sm">نوکیا</span>
             </label>
-            <label for="apple" class="flex items-center gap-y-2 cursor-pointer">
-              <input type="checkbox" name="brand" id="apple">
-              <span class="mr-2">اپل</span>
+            <label for="one_plus" class="flex items-center gap-y-2 py-1 cursor-pointer text-slate-800">
+              <input type="checkbox" name="brand" id="one_plus" class="form-checkbox rounded duration-200 text-orange-400 focus:ring-orange-400">
+              <span class="mr-2 text-sm">وان پلاس</span>
+            </label>
+          </div>
+        </div>
+        <div x-data="{isOpenColor : true}" class="mb-2">
+          <div @click="isOpenColor = !isOpenColor" class="flex justify-between items-center w-full py-2 cursor-pointer">
+            <div class="text-slate-800 font-bold">
+              <span>رنگ محصول</span>
+            </div>
+            <svg :class="isOpenColor ? 'rotate-180' : 'rotate-0'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 transition-all duration-300">
+              <path fill-rule="evenodd"
+                d="M12.53 16.28a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 011.06-1.06L12 14.69l6.97-6.97a.75.75 0 111.06 1.06l-7.5 7.5z"
+                clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div x-show="isOpenColor === true" class="px-2">
+            <label for="white" class="flex items-center gap-y-2 py-1 cursor-pointer text-slate-800">
+              <input type="checkbox" name="color" id="white" class="form-checkbox rounded duration-200 text-orange-400 focus:ring-orange-400">
+              <span class="mr-2 text-sm">سفید</span>
+            </label>
+            <label for="red" class="flex items-center gap-y-2 py-1 cursor-pointer text-slate-800">
+              <input type="checkbox" name="color" id="red" class="form-checkbox rounded duration-200 text-orange-400 focus:ring-orange-400">
+              <span class="mr-2 text-sm">قرمز</span>
+            </label>
+            <label for="blue" class="flex items-center gap-y-2 py-1 cursor-pointer text-slate-800">
+              <input type="checkbox" name="color" id="blue" class="form-checkbox rounded duration-200 text-orange-400 focus:ring-orange-400">
+              <span class="mr-2 text-sm">آبی</span>
+            </label>
+            <label for="gray" class="flex items-center gap-y-2 py-1 cursor-pointer text-slate-800">
+              <input type="checkbox" name="color" id="gray" class="form-checkbox rounded duration-200 text-orange-400 focus:ring-orange-400">
+              <span class="mr-2 text-sm">خاکستری</span>
+            </label>
+          </div>
+        </div>
+        <div x-data="{isOpenPrice : true}" class="mb-2">
+          <div @click="isOpenPrice = !isOpenPrice" class="flex justify-between items-center w-full py-2 cursor-pointer">
+            <div class="text-slate-800 font-bold">
+              <span>قیمت محصول</span>
+            </div>
+            <svg :class="isOpenBrand ? 'rotate-180' : 'rotate-0'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 transition-all duration-300">
+              <path fill-rule="evenodd"
+                d="M12.53 16.28a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 011.06-1.06L12 14.69l6.97-6.97a.75.75 0 111.06 1.06l-7.5 7.5z"
+                clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div x-show="isOpenPrice === true" class="px-2">
+            <label for="5_price" class="flex items-center gap-y-2 py-1 cursor-pointer text-slate-800">
+              <input type="checkbox" name="price" id="5_price" class="form-checkbox rounded duration-200 text-orange-400 focus:ring-orange-400">
+              <span class="mr-2 text-sm">زیر 5 میلیون</span>
+            </label>
+            <label for="price_5_10" class="flex items-center gap-y-2 py-1 cursor-pointer text-slate-800">
+              <input type="checkbox" name="price" id="price_5_10" class="form-checkbox rounded duration-200 text-orange-400 focus:ring-orange-400">
+              <span class="mr-2 text-sm">5 تا 10 میلیون</span>
+            </label>
+            <label for="price_10_20" class="flex items-center gap-y-2 py-1 cursor-pointer text-slate-800">
+              <input type="checkbox" name="price" id="price_10_20" class="form-checkbox rounded duration-200 text-orange-400 focus:ring-orange-400">
+              <span class="mr-2 text-sm">10 تا 20 میلیون</span>
+            </label>
+            <label for="price_20" class="flex items-center gap-y-2 py-1 cursor-pointer text-slate-800">
+              <input type="checkbox" name="price" id="price_20" class="form-checkbox rounded duration-200 text-orange-400 focus:ring-orange-400">
+              <span class="mr-2 text-sm">بالای 20 میلیون</span>
             </label>
           </div>
         </div>
@@ -338,6 +402,7 @@
 
   </div>
   <!-- product section -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 </body>
 
